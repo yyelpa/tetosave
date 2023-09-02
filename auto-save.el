@@ -100,7 +100,7 @@
 
 (defcustom auto-save-idle 1
   "The idle seconds to auto save file."
-  :type 'integer
+  :type 'number
   :group 'auto-save)
 
 (defcustom auto-save-silent nil
