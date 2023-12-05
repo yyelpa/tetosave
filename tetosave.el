@@ -11,7 +11,7 @@
 
 ;; Change log: 2023-12-05 20:20 UTC+8
 ;; Folked and maintained by: include-yy <yy@egh0bww1.com>
-;; Folked-URL: https://github.com/include-yy/teto-save
+;; Folked-URL: https://github.com/include-yy/tetosave
 
 ;; This file is NOT part of GNU Emacs
 
@@ -176,6 +176,35 @@ internally uses `delete-trailing-whitespace'"
 	(run-with-idle-timer
 	 tetosave-idle t
 	 'tetosave-save-buffers)))
+
+;; additional default disable predicators
+(defun tetosave-pred-org-capture ()
+  "predicator for org-capture's buffer and indirect buffer
+
+Due to the use of an indirect buffer by org-capture to record a
+new capture, even if we check for org-capture-mode, its
+base-buffer will still be saved because of the lack of
+inspection.
+Therefore, we can simply check whether a specific org file has an
+indirect buffer. Since the buffer-file-name of an indirect buffer
+is nil, there is no need to inspect it."
+  (eq (buffer-base-buffer
+       (get-buffer (concat "CAPTURE-" (buffer-name))))
+      (current-buffer)))
+
+(defun tetosave-pred-corfu ()
+  "predicator for active corfu completion"
+  (bound-and-true-p corfu--total))
+
+(defun tetosave-pred-company ()
+  "predicator for active company completion"
+  (bound-and-true-p company-candidates))
+
+;; add default predicators to `tetosave-disable-predicates'
+(dolist (a '(tetosave-pred-org-capture
+	     tetosave-pred-corfu
+	     tetosave-pred-company))
+  (add-to-list 'tetosave-disable-predicates a))
 
 (provide 'tetosave)
 
