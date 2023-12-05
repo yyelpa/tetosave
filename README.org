@@ -28,6 +28,7 @@ This package is from lazycat's auto-save, and I have made some improvements.
 	      (file-name-extension (buffer-name)) t)))
    #+END_SRC
 
+For more detailed customization, see comments in =tetosave.el=.
 * Suggestions
 
 Emacs' default auto-save is stupid to generate #foo# files! You can add these lines to disable them:
