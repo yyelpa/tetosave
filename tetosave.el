@@ -39,9 +39,9 @@
 ;; Installation
 ;; 1) Clone or download this repository
 ;; 2) In your `~/.emacs' or `init.el', add the following three lines:
-;;    (add-to-list 'load-path "<path-to-teto-save>")
-;;    (require 'teto-save)
-;;    (teto-save-enable)
+;;    (add-to-list 'load-path "<path-to-tetosave>")
+;;    (require 'tetosave)
+;;    (tetosave-enable)
 
 ;; Customization
 ;; OPTION `tetosave-idle' determines how much time should elapse
@@ -96,7 +96,7 @@ not be saved.")
      (buffer-modified-p)
      ;; is allow by all predicates?
      (not (seq-some (lambda (p) (funcall p))
-		    teto-save-disable-predicates))))
+		    tetosave-disable-predicates))))
 
 (defun tetosave-log (buflist)
   "Output information related to the saved buffer."
