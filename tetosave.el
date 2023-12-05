@@ -133,30 +133,24 @@ internally uses `delete-trailing-whitespace'"
 
 (defun tetosave-save-buffers ()
   (let ((buflist))
-    (ignore-errors
-      ;; get all saveable buffers from `buffer-list'
-      (save-current-buffer
-	(dolist (buf (buffer-list))
-	  (set-buffer buf)
-	  (when (tetosave-buffer-savable-p)
-            (push (buffer-name buf) buflist)
-	    (when tetosave-delete-trailing-whitespace
-	      (tetosave-delete-whitespace))
-	    (if tetosave-silent
-		;; `inhibit-message' can shut up Emacs, but we want
-		;; it doesn't clean up echo area during saving
-		(with-temp-message ""
-		  (let (;; `inhibit-message' make save message don't show in
-			;; minibuffer
-			(inhibit-message t)
-			;; `inhibit-redisplay' prevent intermediate messages
-			;; from flashing to the user
-			(inhibit-redisplay t)
-			;; `message-log-max' make save message don't flash
-			;; in `*Messages*' buffer
-			(message-log-max nil))
-		    (tetosave-save-buffer)))
-              (tetosave-save-buffer))))))
+    ;; get all saveable buffers from `buffer-list'
+    (save-current-buffer
+      (dolist (buf (buffer-list))
+	(set-buffer buf)
+	(when (tetosave-buffer-savable-p)
+          (push (buffer-name buf) buflist)
+	  ;; delete whitespaces
+	  (when tetosave-delete-trailing-whitespace
+	    (tetosave-delete-whitespace))
+	  (if tetosave-silent
+	      ;; `inhibit-message' can shut up Emacs, but we want
+	      ;; it doesn't clean up echo area during saving
+	      (with-temp-message (current-message)
+		(let (;; `inhibit-message' make save message don't show in
+		      ;; minibuffer
+		      (inhibit-message t))
+		  (tetosave-save-buffer)))
+            (tetosave-save-buffer)))))
     ;; Show save log message
     (unless tetosave-silent
       (tetosave-log buflist))))
