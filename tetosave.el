@@ -194,7 +194,8 @@ is nil, there is no need to inspect it."
 
 (defun tetosave-pred-corfu ()
   "predicator for active corfu completion"
-  (bound-and-true-p corfu--total))
+  (and (boundp 'corfu--total)
+       (not (zerop corfu--total))))
 
 (defun tetosave-pred-company ()
   "predicator for active company completion"
