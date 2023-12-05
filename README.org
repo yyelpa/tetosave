@@ -1,10 +1,9 @@
-*  What is auto-save ?
+*  What is tetosave?
 
-- Automatically save file content
-- No annoying temporary files need to be cleaned
 - No need to save manually, protect your fingers.
+- Cleanup trailing backspace
 
-This package is from lazycat's auto-save, and I have made some improvements.
+This package is folked from lazycat's auto-save, plus some improvements.
 
 - https://github.com/manateelazycat/auto-save
 
@@ -12,15 +11,16 @@ This package is from lazycat's auto-save, and I have made some improvements.
 
 1. Clone or download this repository
 
-2. In your config file, add the following three lines:
+2. In your config file, add the following lines:
 
    #+BEGIN_SRC elisp
      (add-to-list 'load-path "<path-to-tetosave>")
      (require 'tetosave)
      (tetosave-enable)
 
+     ;;; OPTIONAL
      ;;; custom predicates if you don't want auto save.
-     ;;; disable auto save mode when current filetype is an gpg file.
+     ;;; example: disable auto save mode when current filetype is an gpg file.
      (add-to-list 'tetosave-disable-predicates
 	   (lambda ()
 	     (string-suffix-p
@@ -29,9 +29,10 @@ This package is from lazycat's auto-save, and I have made some improvements.
    #+END_SRC
 
 For more detailed customization, see comments in =tetosave.el=.
+
 * Suggestions
 
-Emacs' default auto-save is stupid to generate #foo# files! You can add these lines to disable them:
+Emacs' default auto-save is stupid to generate #foo# files. You can add these lines to disable them:
 
 #+BEGIN_SRC elisp
   (setq make-backup-files nil)
