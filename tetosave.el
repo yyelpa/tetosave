@@ -1,17 +1,16 @@
-;;; tetosave.el -- Auto save files when idle -*- lexical-binding:t -*-
+;;; tetosave.el --- Auto save files when idle -*- lexical-binding:t; -*-
 
 ;; Copyright (C) 2013 ~ 2014, Andy Stewart, all rights reserved.
 
 ;; Author: Andy Stewart <lazycat.manatee@gmail.com>
-;; URL: https://github.com/manateelazycat/auto-save
-;; Version: 0.6
-;; Keywords: auto-save
 ;; Created: 2013-12-31 00:32:00
-;; Package-Requires: ((emacs "29.1"))
+;; ORG-URL: https://github.com/manateelazycat/auto-save
+;; Maintainer: include-yy <yy@egh0bww1.com>
 
-;; Change log: 2023-12-05 20:20 UTC+8
-;; Folked and maintained by: include-yy <yy@egh0bww1.com>
-;; Folked-URL: https://github.com/include-yy/tetosave
+;; Package-Version: 0.6
+;; Package-Requires: ((emacs "29.1"))
+;; Keywords: tools
+;; URL: https://github.com/include-yy/tetosave
 
 ;; This file is NOT part of GNU Emacs
 
@@ -33,8 +32,6 @@
 ;;; Commentary:
 
 ;; Auto save file when emacs idle
-
-;;; Usage
 
 ;; Installation
 ;; 1) Clone or download this repository
@@ -202,5 +199,4 @@ is nil, there is no need to inspect it."
   (add-to-list 'tetosave-disable-predicates a))
 
 (provide 'tetosave)
-
 ;;; tetosave.el ends here

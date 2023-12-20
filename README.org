@@ -9,32 +9,34 @@ This package is folked from lazycat's auto-save, plus some improvements(IMO).
 
 **  Installation
 
-1. Clone or download this repository, and add its path to =load-path=:
-   #+BEGIN_SRC elisp
-     (add-to-list 'load-path <path-to-tetosave)
-   #+END_SRC
-   If you are using Emacs 29 or above, you can use =package-vc= to get it like this(without need to add =load-path=)
-   #+BEGIN_SRC elisp
-     (add-to-list 'package-vc-selected-packages
-		  '(tetosave :url "https://github.com/include-yy/tetosave"
-			     :vc-backend Git))
-     (package-vc-install-selected-packages)
-   #+END_SRC
+Clone or download this repository, and add its path to =load-path=:
 
-2. In your config file, add the following lines:
+#+BEGIN_SRC elisp
+  (add-to-list 'load-path <path-to-tetosave>)
+#+END_SRC
 
-   #+BEGIN_SRC elisp
-     (use-package tetosave
-       :config
-       (setopt tetosave-idle 0.5)
-       (tetosave-enable)
-       ;; OPTIONAL
-       ;; custom predicates if you don't want auto save.
-       ;; example: disable tetosave when current filetype is an gpg file.
-       (add-to-list 'tetosave-disable-predicates
-		    (defun init/teto-pred-gpg ()
-		      (eq major-mode 'authinfo-mode))))
-   #+END_SRC
+If you are using Emacs 29 or above, you can use =package-vc= to get it like this(without need to add =load-path=)
+
+#+BEGIN_SRC elisp
+  (add-to-list 'package-vc-selected-packages
+	       '(tetosave :url "https://github.com/include-yy/tetosave"))
+  (package-vc-install-selected-packages)
+#+END_SRC
+
+In your config file, add the following lines:
+
+#+BEGIN_SRC elisp
+  (use-package tetosave
+    :config
+    (setopt tetosave-idle 0.5)
+    (tetosave-enable)
+    ;; OPTIONAL
+    ;; custom predicates if you don't want auto save.
+    ;; example: disable tetosave when current filetype is an gpg file.
+    (add-to-list 'tetosave-disable-predicates
+		 (defun init/teto-pred-gpg ()
+		   (eq major-mode 'authinfo-mode))))
+#+END_SRC
 
 For more detailed customization, see comments in =tetosave.el=.
 
