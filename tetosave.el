@@ -116,7 +116,8 @@ set `write-region-inhibit-fsync' to `t' can speed up save operation."
   "remove all excess spaces and trailing blank lines except for the current line.
 internally uses `delete-trailing-whitespace'"
   (interactive)
-  (let ((begin (line-beginning-position))
+  (let ((buffer-read-only nil)
+	(begin (line-beginning-position))
         (end (point)))
     (save-excursion
       (when (< (point-min) begin)
