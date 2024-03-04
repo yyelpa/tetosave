@@ -7,7 +7,7 @@
 ;; ORG-URL: https://github.com/manateelazycat/auto-save
 ;; Maintainer: include-yy <yy@egh0bww1.com>
 
-;; Package-Version: 1.0
+;; Package-Version: 1.0.1
 ;; Package-Requires: ((emacs "29.1"))
 ;; Keywords: tools
 ;; URL: https://github.com/include-yy/tetosave
