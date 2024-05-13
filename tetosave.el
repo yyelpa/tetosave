@@ -10,7 +10,7 @@
 ;; Package-Version: 1.0.1
 ;; Package-Requires: ((emacs "29.1"))
 ;; Keywords: tools
-;; URL: https://github.com/include-yy/tetosave
+;; URL: https://github.com/yyelpa/tetosave
 
 ;; This file is NOT part of GNU Emacs
 
